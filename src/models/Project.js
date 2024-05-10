@@ -3,7 +3,7 @@ import { sequelize } from "../database/database.js";
 import {Task} from "./Task.js"
 
 export const Project = sequelize.define(
-  "Project",
+  'Projects',
   {
     project_id: {
       type: DataTypes.INTEGER,
@@ -23,5 +23,5 @@ export const Project = sequelize.define(
   }
 );
 
-Task.belogsTo(Project, {foreignKey: 'project_id'})
+Task.belongsTo(Project, {foreignKey: 'project_id'})
 Project.hasMany(Task, {foreignKey: 'project_id'})

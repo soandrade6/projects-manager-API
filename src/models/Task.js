@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../database/database.js'
 
-export const Task = sequelize.define('Task', {
+export const Task = sequelize.define('Tasks', {
     task_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -11,7 +11,7 @@ export const Task = sequelize.define('Task', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Project',
+            model: 'Projects',
             key: 'project_id'
         }
     }, 
