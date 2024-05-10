@@ -44,3 +44,9 @@ VALUES
     (5, 'Data cleaning', 'Clean and preprocess raw data for analysis.'),
     (5, 'Statistical analysis', 'Conduct statistical analysis on cleaned data to identify trends.'),
     (5, 'Report generation', 'Generate reports summarizing findings from data analysis.');
+
+-- Join of projects and tasks
+SELECT projects.project_id, projects.project_name, projects.description_project, 
+       tasks.task_id, tasks.title, tasks.description_task, tasks.creation_date
+FROM projects
+INNER JOIN tasks ON projects.project_id = tasks.project_id;
