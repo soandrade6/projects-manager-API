@@ -1,0 +1,23 @@
+{
+  "name": "projects-manager-api",
+  "version": "1.0.0",
+  "description": "CRUD API which allows users to create, read, update, and delete projects and its tasks.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
