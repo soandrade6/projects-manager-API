@@ -1,11 +1,18 @@
 import { Router } from "express";
+import {
+  getProjects,
+  createProject,
+  updateProject,
+  deleteProject,
+  getProject,
+} from "../controllers/projects.controllers.js";
 
 const router = Router();
 
-router.get("/projects");
-router.post("/projects");
-router.put("/projects/:id");
-router.delete("/projects/:id");
-router.get("/projects/:id"); //To obtain an especific project
+router.get("/projects", getProjects);
+router.post("/projects", createProject);
+router.put("/projects/:project_id", updateProject);
+router.delete("/projects/:project_id", deleteProject);
+router.get("/projects/:project_id", getProject); //To obtain an especific project
 
 export default router;
