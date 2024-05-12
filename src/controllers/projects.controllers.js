@@ -1,4 +1,5 @@
 import { Project } from "../models/Project.js";
+import { Task } from "../models/Task.js";
 
 export const getProjects = async (req, res) => {
   try {
@@ -70,4 +71,15 @@ export const deleteProject = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
+};
+
+export const getProjectTasks = async (req, res) => {
+  const { project_id } = req.params;
+  const tasks = await Task.findAll({
+    where: {
+      project_id,
+    },
+  });
+
+  res.json(tasks);
 };
