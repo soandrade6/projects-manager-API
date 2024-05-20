@@ -77,7 +77,7 @@ export const getProjectTasks = async (req, res) => {
   const { id } = req.params;
   const tasks = await Task.findAll({
     where: {
-      id,
+      project_id : id,
     },
   });
 
