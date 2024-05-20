@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize'
 import { sequelize } from '../database/database.js'
 
 export const Task = sequelize.define('Tasks', {
-    task_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -23,7 +23,7 @@ export const Task = sequelize.define('Tasks', {
         type: DataTypes.STRING,
         allowNull: false
     }, 
-    description_task: {
+    description: {
         type: DataTypes.STRING,
     }
 }, {
