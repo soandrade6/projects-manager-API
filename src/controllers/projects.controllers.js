@@ -12,11 +12,11 @@ export const getProjects = async (req, res) => {
 
 export const getProject = async (req, res) => {
   try {
-    const { project_id } = req.params;
+    const { id } = req.params;
 
     const project = await Project.findOne({
       where: {
-        project_id,
+        id,
       },
     });
     if (!project)
@@ -28,12 +28,12 @@ export const getProject = async (req, res) => {
 };
 
 export const createProject = async (req, res) => {
-  const { project_name, description_project } = req.body;
+  const { name, description} = req.body;
 
   try {
     const newProject = await Project.create({
-      project_name,
-      description_project,
+      name,
+      description,
     });
 
     res.json(newProject);
@@ -44,13 +44,13 @@ export const createProject = async (req, res) => {
 
 export const updateProject = async (req, res) => {
   try {
-    const { project_id } = req.params;
-    const { project_name, description_project } = req.body;
+    const { id } = req.params;
+    const { name, description } = req.body;
 
-    const project = await Project.findByPk(project_id);
+    const project = await Project.findByPk(id);
 
-    project.project_name = project_name;
-    project.description_project = description_project;
+    project.name = name;
+    project.description = description;
     await project.save();
 
     res.json(project);
@@ -60,10 +60,10 @@ export const updateProject = async (req, res) => {
 };
 export const deleteProject = async (req, res) => {
   try {
-    const { project_id } = req.params;
+    const { id } = req.params;
     await Project.destroy({
       where: {
-        project_id,
+        id,
       },
     });
 
@@ -74,10 +74,10 @@ export const deleteProject = async (req, res) => {
 };
 
 export const getProjectTasks = async (req, res) => {
-  const { project_id } = req.params;
+  const { id } = req.params;
   const tasks = await Task.findAll({
     where: {
-      project_id,
+      id,
     },
   });
 
