@@ -23,5 +23,6 @@ export const Project = sequelize.define(
   }
 );
 
-Task.belongsTo(Project, {foreignKey: 'project_id'})
-Project.hasMany(Task, {foreignKey: 'id'})
+// La clave foránea debe referirse al campo `id` del modelo Project
+Project.hasMany(Task, { foreignKey: 'project_id', sourceKey: 'id' });
+Task.belongsTo(Project, { foreignKey: 'project_id', targetKey: 'id' });

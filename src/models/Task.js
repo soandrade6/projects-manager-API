@@ -12,7 +12,7 @@ export const Task = sequelize.define('Tasks', {
         allowNull: false,
         references: {
             model: 'Projects',
-            key: 'project_id'
+            key: 'id'
         }
     }, 
     creation_date: {
