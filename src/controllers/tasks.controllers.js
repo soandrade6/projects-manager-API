@@ -11,10 +11,10 @@ export const getTasks = async (req, res) => {
 
 export const getTask = async (req, res) => {
   try {
-    const { task_id } = req.params;
+    const { id } = req.params;
     const task = await Task.findOne({
       where: {
-        task_id,
+        id,
       },
     });
     if (!task) return res.status(400).json({ message: "Task does not exists" });
@@ -24,14 +24,14 @@ export const getTask = async (req, res) => {
 };
 
 export const createTask = async (req, res) => {
-  const { project_id, creation_date, title, description_task } = req.body;
+  const { project_id, creation_date, title, description } = req.body;
 
   try {
     const newTask = await Task.create({
       project_id,
       creation_date,
       title,
-      description_task,
+      description,
     });
     res.json(newTask);
   } catch (error) {
@@ -41,13 +41,13 @@ export const createTask = async (req, res) => {
 
 export const updateTask = async (req, res) => {
   try {
-    const { task_id } = req.params;
-    const { title, description_task } = req.body;
+    const { id } = req.params;
+    const { title, description } = req.body;
 
-    const task = await Task.findByPk(task_id);
+    const task = await Task.findByPk(id);
 
     task.title = title;
-    task.description_task = description_task;
+    task.description = description;
     await task.save();
 
     res.json(task);
@@ -58,10 +58,10 @@ export const updateTask = async (req, res) => {
 
 export const deleteTask = async (req, res) => {
   try {
-    const { task_id } = req.params;
+    const { id } = req.params;
     await Task.destroy({
       where: {
-        task_id,
+        id,
       },
     });
     res.sendStatus(204);
