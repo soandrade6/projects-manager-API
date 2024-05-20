@@ -5,16 +5,16 @@ import {Task} from "./Task.js"
 export const Project = sequelize.define(
   'Projects',
   {
-    project_id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    project_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description_project: {
+    description: {
       type: DataTypes.STRING,
     },
   },
@@ -24,4 +24,4 @@ export const Project = sequelize.define(
 );
 
 Task.belongsTo(Project, {foreignKey: 'project_id'})
-Project.hasMany(Task, {foreignKey: 'project_id'})
+Project.hasMany(Task, {foreignKey: 'id'})
